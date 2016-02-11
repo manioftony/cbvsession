@@ -1,14 +1,11 @@
 from django.views.generic import ListView
-from .models import Country, State
+from django.db.models import get_model
 
 
-class CountryList(ListView):
+class List(ListView):
 
-    model = Country
-    template_name = 'masterdata/list.html'
+    @property
+    def model(self):
+        return get_model('masterdata', self.kwargs.get('model'))
 
-
-class StateList(ListView):
-
-    model = State
     template_name = 'masterdata/list.html'
