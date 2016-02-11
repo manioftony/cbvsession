@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Country, State
 
-# Create your views here.
+
+class CountryList(ListView):
+
+    model = Country
+    template_name = 'masterdata/list.html'

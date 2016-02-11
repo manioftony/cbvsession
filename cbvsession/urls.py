@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from masterdata import urls as masterdata
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'cbvsession.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
+urlpatterns = patterns(
+    '',
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^masterdata/', include(masterdata)),
 )
