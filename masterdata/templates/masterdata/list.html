@@ -1,3 +1,28 @@
-{% for i in object_list %}
-<h1>{{ i }}</br></h1>
-{% endfor %}
+<center><h3>{{ view.kwargs.model|title }}s<br/>
+-----------------------------------------</h3>
+
+  <table  border="1">
+
+    <thead>
+      <tr>
+	<th>Name</th>
+	<th>Status</th>
+	{% if view.kwargs.model == 'state' %}<th>Country</th>{% endif %}
+	<th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for obj in object_list %}
+      <tr>
+        <td>{{ obj.name }}</td>
+	{% if view.kwargs.model == 'state' %}<td>{{ obj.country }}</td>{% endif %}
+        <td>{{ obj.get_active_display }}</td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+  </table>
+
+</center>
