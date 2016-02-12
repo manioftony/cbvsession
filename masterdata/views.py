@@ -2,20 +2,19 @@ from django.views import generic as g
 from django.db.models import get_model
 
 
-class List(g.ListView):
+class ManageBase(object):
 
     @property
     def model(self):
         return get_model('masterdata', self.kwargs.get('model'))
+
+
+class List(ManageBase, g.ListView):
 
     template_name = 'masterdata/list.html'
 
 
-class Create(g.CreateView):
-
-    @property
-    def model(self):
-        return get_model('masterdata', self.kwargs.get('model'))
+class Create(ManageBase, g.CreateView):
 
     template_name = 'masterdata/add-edit.html'
 
