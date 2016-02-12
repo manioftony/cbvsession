@@ -1,0 +1,17 @@
+<form action="." method="POST">{% csrf_token %}
+  <table>
+    {% for field in form %}
+    <tr>
+      <td>{{ field.label }}:</td>
+      <td>
+	{{ field }}
+	<p style="color:red">{% if field.errors %}{{ field.errors|striptags }}{% endif %}</p>
+      </td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td></td>
+      <td><button type="submit">Submit</button></td>
+    </tr>
+  </table>
+</form>
