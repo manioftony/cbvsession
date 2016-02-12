@@ -48,10 +48,6 @@ class Status(Delete):
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
-        success_url = self.get_success_url()
-        if self.object.active == 0:
-            self.object.active = 2
-        elif self.object.active == 2:
-            self.object.active = 0
+        self.object.switch()
         self.object.save()
-        return HttpResponseRedirect(success_url)
+        return HttpResponseRedirect(self.get_success_url())
