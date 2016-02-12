@@ -8,7 +8,7 @@
 	<th>Name</th>
 	<th>Status</th>
 	{% if view.kwargs.model == 'state' %}<th>Country</th>{% endif %}
-	<th>Action</th>
+	<th>Actions</th>
       </tr>
     </thead>
 
@@ -18,7 +18,10 @@
         <td>{{ obj.name }}</td>
 	{% if view.kwargs.model == 'state' %}<td>{{ obj.country }}</td>{% endif %}
         <td>{{ obj.get_active_display }}</td>
-        <td><a href="../update/{{ obj.pk }}/">Update</a></td>
+        <td>
+	  <a href="../update/{{ obj.pk }}/">Update</a>
+	  <a href="../delete/{{ obj.pk }}/">Delete</a>
+	</td>
       </tr>
       {% endfor %}
     </tbody>

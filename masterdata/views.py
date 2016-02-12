@@ -35,3 +35,9 @@ class Create(FormBase, g.CreateView):
 
 class Update(FormBase, g.UpdateView):
     pass
+
+
+class Delete(FormBase, g.DeleteView):
+
+    def get(self, request, *args, **kwargs):
+        return self.delete(request, *args, **kwargs)
