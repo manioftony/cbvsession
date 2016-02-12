@@ -8,4 +8,5 @@ urlpatterns = patterns(
     url(r'^(?P<model>(:?country|state))/create/$', v.Create.as_view(), name='create'),
     url(r'^(?P<model>(:?country|state))/update/(?P<pk>\d+)/$', v.Update.as_view(), name='update'),
     url(r'^(?P<model>(:?country|state))/delete/(?P<pk>\d+)/$', v.Delete.as_view(), name='update'),
+    url(r'^(?P<model>(:?country|state))/status/(?P<pk>\d+)/$', v.Status.as_view(), name='update'),
 )

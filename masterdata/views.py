@@ -1,5 +1,6 @@
 from django.views import generic as g
 from django.db.models import get_model
+from django.http import HttpResponseRedirect
 
 
 class ManageBase(object):
@@ -41,3 +42,16 @@ class Delete(FormBase, g.DeleteView):
 
     def get(self, request, *args, **kwargs):
         return self.delete(request, *args, **kwargs)
+
+
+class Status(Delete):
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        if self.object.active == 0:
+            self.object.active = 2
+        elif self.object.active == 2:
+            self.object.active = 0
+        self.object.save()
+        return HttpResponseRedirect(success_url)
