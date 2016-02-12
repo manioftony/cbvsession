@@ -18,7 +18,7 @@
         <td>{{ obj.name }}</td>
 	{% if view.kwargs.model == 'state' %}<td>{{ obj.country }}</td>{% endif %}
         <td>{{ obj.get_active_display }}</td>
-        <td></td>
+        <td><a href="../update/{{ obj.pk }}/">Update</a></td>
       </tr>
       {% endfor %}
     </tbody>
