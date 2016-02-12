@@ -18,3 +18,7 @@ class Create(g.CreateView):
         return get_model('masterdata', self.kwargs.get('model'))
 
     template_name = 'masterdata/add-edit.html'
+
+    def get_success_url(self):
+        return "/masterdata/%s/list/" % (
+            self.kwargs.get('model'))

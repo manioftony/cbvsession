@@ -1,3 +1,6 @@
+<center><h3>Add {{ view.kwargs.model|title }}<br/>
+-----------------------------------------</h3>
+
 <form action="." method="POST">{% csrf_token %}
   <table>
     {% for field in form %}
@@ -15,3 +18,5 @@
     </tr>
   </table>
 </form>
+
+</center>
